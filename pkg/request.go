@@ -45,6 +45,11 @@ type Request struct {
 	// first, Result.Disconnected is true and ErrorMsg is empty. Zero uses the
 	// ordinary client timeout; negative values are invalid.
 	DisconnectAfter Duration `json:"disconnectAfter,omitempty"`
+
+	// Network limits how fast the response body is read. In JSON it is a
+	// Chrome DevTools preset ("3g", "slow-4g" or "fast-4g") or a whole number of
+	// kilobits per second. 0 means unlimited.
+	Network Kbps `json:"network,omitempty"`
 }
 
 // Duration is a time.Duration encoded in JSON as a Go duration string such
